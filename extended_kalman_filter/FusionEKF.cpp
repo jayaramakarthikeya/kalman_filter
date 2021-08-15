@@ -89,11 +89,12 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       float px = measurement_pack.raw_measurements_[0]*cos(measurement_pack.raw_measurements_[1]);
       float py = measurement_pack.raw_measurements_[0]*sin(measurement_pack.raw_measurements_[1]);
       ekf_.x_ << px,py,0,0;
+      
     }
     else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       // TODO: Initialize state.
       ekf_.x_ << measurement_pack.raw_measurements_[0],measurement_pack.raw_measurements_[1],0,0;
-
+      
     }
 
     // done initializing, no need to predict or update
